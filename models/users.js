@@ -7,8 +7,14 @@ const userSchema = new mongoose.Schema(
         password: { type: String, required: true },
         date: { type: Date , default: Date.now },
         photo: { type: String },
-        posts: { type: Array },
-        favorites: { type: Array }
+        posts: [{ 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Post' // references post
+        }],
+        favorites: [{ 
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Post' // reference post 
+            }]
     }
 );
 
