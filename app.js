@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 // process.env.port might be here later
 const PORT = 3000;
+
+// require our database
+require('./db/db.js');
 
 // middleware
 app.set('views', __dirname);
