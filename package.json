@@ -1,0 +1,29 @@
+{
+  "name": "classic-social-network",
+  "version": "1.0.0",
+  "description": "clone of an older social network",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Combatd/classic-social-network.git"
+  },
+  "author": "mark calvelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Combatd/classic-social-network/issues"
+  },
+  "homepage": "https://github.com/Combatd/classic-social-network#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.7",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
