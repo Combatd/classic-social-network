@@ -3,20 +3,7 @@ const router = express.Router();
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
-// register show (GET) route
-router.get('/register', (req, res) => {
-    console.log(req.body);
 
-    if(err) {
-        console.log(err);
-        res.send(err);
-    } else {
-        res.render('register.ejs', {
-
-        });
-    }
-
-});
 
 router.post('/register', async (req, res) => {
 
@@ -38,7 +25,7 @@ router.post('/register', async (req, res) => {
     console.log(createdUser);
     req.session.username;
     req.session.logged = true;
-
+    console.log(req.body);
     res.redirect('/posts');
 });
 
@@ -48,10 +35,52 @@ router.post('/login', async (req, res) => {
     // will redirect if successful
     // it may send a message that username or password is incorrect
     // for either incorrect password or username
+
+    // find if the user exits
+    try {
+        const foundUser = await User.findOne({ username: req.body.username });
+        // if User.findOne returns null/ or undefined it won't throw an error
+        if (foundUser) {
+
+            if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+
+                req.session.message = '';
+
+                req.session.username = foundUser.username;
+                req.session.logged = true;
+
+                res.redirect('/authors')
+
+
+            } else {
+                req.session.message = 'Username or password is incorrect';
+                res.redirect('/login');
+            }
+
+
+        } else {
+
+            req.session.message = 'Username or password is incorrect';
+            res.redirect('/login');
+            // form is on /login
+        }
+
+    } catch (err) {
+        res.send(err);
+    }
+
 });
 
 router.get('/logout', (req, res) => {
     
     // we will destroy the session here
+    req.session.destroy((err) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.redirect('/');
+        }
+    })
 
 });

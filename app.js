@@ -33,12 +33,20 @@ app.get('/', (req, res) => {
 
 // register show (GET) route
 app.get('/register', (req, res) => {
-    console.log(req.body);
 
     res.render('register.ejs', {
 
     });
             
+
+});
+
+app.get('/login', (req, res) => {
+    
+
+    res.render('login.ejs', {
+        
+    });
 
 });
 
