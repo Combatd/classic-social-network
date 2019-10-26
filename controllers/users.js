@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 
 
-router.post('/register', async (req, res) => {
+router.post('/registration', async (req, res) => {
 
     const password = req.body.password;
     // hash a password in a generated salt
@@ -45,10 +45,11 @@ router.post('/login', async (req, res) => {
             if (bcrypt.compareSync(req.body.password, foundUser.password)) {
 
                 req.session.message = '';
-
+                
+                console.log(foundUser);
                 req.session.username = foundUser.username;
                 req.session.logged = true;
-
+                
                 res.redirect('/authors')
 
 
@@ -84,3 +85,5 @@ router.get('/logout', (req, res) => {
     })
 
 });
+
+module.exports = router; 
