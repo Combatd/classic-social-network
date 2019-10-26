@@ -18,8 +18,9 @@ require('./db/db.js');
 
 
 // middleware
-app.set('views', __dirname);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 // root route
 app.get('/', (req, res) => {
