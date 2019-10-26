@@ -3,6 +3,20 @@ const router = express.Router();
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
+// register show (GET) route
+router.get('/register', (req, res) => {
+    console.log(req.body);
+
+    if(err) {
+        console.log(err);
+        res.send(err);
+    } else {
+        res.render('register.ejs', {
+
+        });
+    }
+
+});
 
 router.post('/register', async (req, res) => {
 
