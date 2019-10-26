@@ -5,7 +5,11 @@ const postSchema = new mongoose.Schema(
         title: { type: String, required: true },
         body: { type: String },
         photo: { type: String },
-        link: { type: String }
+        link: { type: String },
+        comments: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment' // reference comment
+        }]
     }
 )
 
