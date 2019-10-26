@@ -9,6 +9,14 @@ const PORT = 3000;
 // require our database
 require('./db/db.js');
 
+// set up pug
+// const pug = require('pug');
+
+// const fn = pug.compile('string of pug', options);
+// const html = fn(locals);
+
+
+
 // middleware
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
