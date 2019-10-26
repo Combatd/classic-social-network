@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 
 // root route
 app.get('/', (req, res) => {
-    res.send('hello world!')
+    res.render('index');
 });
 
 app.listen(PORT, () => {
