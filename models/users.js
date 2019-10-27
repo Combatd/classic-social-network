@@ -14,10 +14,10 @@ const userSchema = new mongoose.Schema(
         favorites: [{ 
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Post' // reference post 
-            }]
+        }]
     }
 );
 
-const User = mongoose.model('users', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User; 

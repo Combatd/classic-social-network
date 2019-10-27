@@ -32,9 +32,15 @@ app.use(methodOverride('_method'));//must come before our routes
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+// controllers
 
 const usersController = require('./controllers/users.js');
 app.use('/auth', usersController)
+
+const postsController = require('./controllers/posts.js');
+app.use('/posts', postsController);
+
+// const commentsController = require('./controllers/comments.js');
 
 
 // root route
