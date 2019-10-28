@@ -1,0 +1,15 @@
+<%- include ../partials/header %>
+    <%- include ../partials/navbar %>
+        <header>
+            <h1><%=user.username%>: Create a New Post</h1>
+        </header>
+        <main>
+            <form action="/posts" method="post">
+                <input type="text" name="title" /><br />
+                <textarea name="body"></textarea><br />
+                <input type="submit" value="Publish Post" />
+            </form>
+        </main>
+
+    </body>
+</html>

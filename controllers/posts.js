@@ -25,16 +25,18 @@ router.get('/', (req, res) => {
 
 router.get('/new', (req, res) => {
    // find if the user exists
-    const currentUser = User.findOne({ "username" : req.session.username} );
-
-    Post.find({}, (err, all) => {
+    const currentUser = User.findOne({ _id : req.session.userId} );
+    console.log(req.session.id, " id of currentUser");
+    console.log(currentUser);
+    Post.find({}, (err, allPosts) => {
         if(err) {
             console.log(err);
             res.send(err);
         } else {
             
             res.render('posts/new.ejs', {
-                user: currentUser
+                user: currentUser,
+                posts: allPosts
             })
         }
     });
@@ -64,6 +66,37 @@ router.get('/:id', (req, res) => {
             }
 
         });    
+});
+
+router.post('/', (req, res) => {
+    Post.create(req.body, (err, createdPost) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            console.log(req.body)
+
+            // find the user by its username, then push the post
+            // into the posts array
+            User.findOne( { username: req.session.username }, (err, foundUser) => {
+
+                if (err) {
+                    console.log(err);
+                    res.send(err);
+                } else {
+                    
+                    foundUser.posts.push(createdPost);
+                    // if we mutate a document we have to save it
+
+                    foundUser.save((err, savedPost) => {
+                        console.log(savedPost)
+                        res.redirect('/posts')
+                    })
+                    // when we are dealin
+                }
+            });
+        }
+    });
 });
 
 

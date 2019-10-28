@@ -23,7 +23,7 @@ router.post('/registration', async (req, res) => {
     // username and then log the session as online
     const createdUser = await User.create(userDbEntry);
     console.log(createdUser);
-    req.session.username;
+    req.session.username = createdUser.username;
     req.session.logged = true;
     console.log(req.body);
     res.redirect('/posts');
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
                 req.session.username = foundUser.username;
                 req.session.logged = true;
                 
-                res.redirect('/authors')
+                res.redirect('/posts')
 
 
             } else {

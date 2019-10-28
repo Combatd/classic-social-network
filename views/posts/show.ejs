@@ -1,0 +1,24 @@
+<%- include ../partials/header %>
+    <%- include ../partials/navbar %>
+    <header>
+        <h1>Posts</h1>
+        
+            <a href="/posts/new">Create a new Post</a>
+    </header>
+    <main>
+    <h1><%=post.title%></h1>
+    <section>
+        <%=post.body%>
+    </section>
+    <section>
+        <a href="/posts/<%=post._id%>/edit">Edit</a>
+    </section>
+    <section>
+        <form action="/posts/<%=post._id%>?_method=DELETE" method="post">
+            <button value='DELETE'>DELETE</button>
+        </form>
+    </section>
+    </main>
+
+    </body>    
+</html>
