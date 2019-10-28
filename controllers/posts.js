@@ -112,6 +112,20 @@ router.post('/', (req, res) => {
     });
 });
 
+// Post - Delete Route 
+
+// Post - Put Route
+router.put('/:id', (req, res) => {
+    Post.findByIdAndUpdate(req.params.id, req.body, (err, response) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.redirect('/posts/' + req.params.id);
+        }
+
+    });
+});
 
 
 
