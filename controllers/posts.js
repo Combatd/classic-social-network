@@ -46,7 +46,7 @@ router.get('/new', (req, res) => {
 // Post - Show
 router.get('/:id', (req, res) => {
     // req.params.id is a post id
-    User.findOne({"posts" : req.params.id})
+    User.findOne({'posts' : req.params.id})
         .populate(
             {
                 path: "posts",
@@ -66,6 +66,19 @@ router.get('/:id', (req, res) => {
             }
 
         });    
+});
+
+router.get('/:id/edit', (req, res) => {
+    Post.findById(req.params.id, (err, foundPost) => {
+        if(err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.render('posts/edit.ejs' , {
+                post: foundPost
+            });
+        }
+    });
 });
 
 router.post('/', (req, res) => {

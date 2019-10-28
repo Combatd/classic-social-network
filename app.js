@@ -42,14 +42,19 @@ app.use('/posts', postsController);
 
 // const commentsController = require('./controllers/comments.js');
 
-
-// root route
 app.get('/', (req, res) => {
-    res.render('index');
+    // can inject a message into the ejs?
+    // how do we know we have a message?
+    console.log(req.session, 'home route')
+    res.render('index.ejs', {
+        logOut: req.session.logOutMsg // this evualates to our string
+    })
 });
 
+
+
 // register show (GET) route
-app.get('/register', (req, res) => {
+app.get('/registration', (req, res) => {
 
     res.render('register.ejs', {
 
@@ -66,6 +71,15 @@ app.get('/login', (req, res) => {
     });
 
 });
+
+
+// root route
+app.get('/', (req, res) => {
+    res.render('index.ejs', {
+
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log('Server listening on port ' + PORT); 

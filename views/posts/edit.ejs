@@ -1,0 +1,14 @@
+<%- include ../partials/header %>
+    <%- include ../partials/navbar %>
+
+    <main>
+        <h2>Edit Post <%-post.title%>:</h2>
+        <form action="/posts/<%=post._id%>?_method=PUT" method="post">
+            <input type="text" name="title" value="<%=post.title%>" /><br />
+            <textarea name="body"><%=post.body%></textarea><br />
+            <input type="submit" value="Update Post" />
+        </form>
+    </main>
+
+    </body>
+</html>

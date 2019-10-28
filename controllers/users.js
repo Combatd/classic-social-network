@@ -55,6 +55,7 @@ router.post('/login', async (req, res) => {
 
             } else {
                 req.session.message = 'Username or password is incorrect';
+                console.log(req.session.message);
                 res.redirect('/login');
             }
 
@@ -62,6 +63,7 @@ router.post('/login', async (req, res) => {
         } else {
 
             req.session.message = 'Username or password is incorrect';
+            console.log(req.session.message);
             res.redirect('/login');
             // form is on /login
         }
@@ -71,6 +73,8 @@ router.post('/login', async (req, res) => {
     }
 
 });
+
+// auth/logout
 
 router.get('/logout', (req, res) => {
     
