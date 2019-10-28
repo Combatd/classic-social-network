@@ -5,13 +5,15 @@ const Post = require('../models/posts');
 
 // Comment - New (GET)
 router.get('posts/:id/newcomment', (req, res) => {
+    console.log(req.params.id);
     Post.findById(req.params.id, (err, foundPost) => {
         if (err) {
             console.log(err);
             res.send(err);
         } else {
             res.render('comments/new.ejs', {
-                post: foundPost
+                post: foundPost,
+                postId : req.params.id
             });
         }
     });
@@ -27,7 +29,7 @@ router.post('/posts/:id', (req, res) => {
 
             // find the user by its username, then push the post
             // into the posts array
-            Post.findById(req.params.id, (err, foundPost) => {
+            Post.findById(req.body.postId, (err, foundPost) => {
                 
                 const foundUser = User.findOne({'posts': req.params.id});
 

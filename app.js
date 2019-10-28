@@ -41,14 +41,14 @@ const postsController = require('./controllers/posts.js');
 app.use('/posts', postsController);
 
 const commentsController = require('./controllers/comments.js');
-// app.use('/posts/comments', commentsController);
+app.use('/', commentsController);
 
 app.get('/', (req, res) => {
     // can inject a message into the ejs?
     // how do we know we have a message?
     console.log(req.session, 'home route')
     res.render('index.ejs', {
-        logOut: req.session.logOutMsg // this evualates to our string
+        logOut: req.session.logOutMsg // this evaluates to our string
     })
 });
 
