@@ -41,7 +41,7 @@ const postsController = require('./controllers/posts.js');
 app.use('/posts', postsController);
 
 const commentsController = require('./controllers/comments.js');
-app.use('/posts/comments', commentsController);
+// app.use('/posts/comments', commentsController);
 
 app.get('/', (req, res) => {
     // can inject a message into the ejs?
