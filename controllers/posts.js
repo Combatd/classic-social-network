@@ -113,6 +113,30 @@ router.post('/', (req, res) => {
 });
 
 // Post - Delete Route 
+router.delete('/:id', (req, res) => {
+    // when we delete a post, we want to remove that
+    // post from the users array
+
+    Post.findByIdAndRemove(req.params.id, (err, response) => {
+
+        User.findOne({ 'posts': req.params.id }, (err, foundUser) => {
+            if (err) {
+                res.send(err);
+            } else {
+                // attached to mongo arrays, has a remove that takes
+                // an id
+                foundUser.posts.remove(req.params.id);
+                // if we mutate a document, we need to save it
+                // back to the db
+                foundUser.save((err, updatedUser) => {
+                    console.log(updatedUser, ",--- update user")
+                    res.redirect('/posts')
+                })
+            }
+        })
+
+    });
+});
 
 // Post - Put Route
 router.put('/:id', (req, res) => {
