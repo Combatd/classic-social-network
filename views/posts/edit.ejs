@@ -5,6 +5,9 @@
         <h2>Edit Post <%-post.title%>:</h2>
         <form action="/posts/<%=post._id%>?_method=PUT" method="post">
             <input type="text" name="title" value="<%=post.title%>" /><br />
+            <input type="text" name="photo" placeholder="photo url" value="<%=post.photo%>"<br>
+            <input type="text" name="link" placeholder="https://google.com" value="<%=post.link%>">
+            <br>
             <textarea name="body"><%=post.body%></textarea><br />
             <input type="submit" value="Update Post" />
         </form>

@@ -46,7 +46,10 @@ router.get('/new', (req, res) => {
 // Post - Show
 router.get('/:id', (req, res) => {
     // req.params.id is a post id
-    User.findOne({'posts' : req.params.id})
+
+    
+    
+    User.findOne({ 'posts' : req.params.id } )
         .populate(
             {
                 path: "posts",
@@ -55,13 +58,17 @@ router.get('/:id', (req, res) => {
         .exec((err, foundUser) => {
             console.log(foundUser, " user that made post");
 
+            const ourPost = Post.findById(req.params.id)
+            console.log(ourPost, " THE POST WE FOUND");
+
             if(err) {
                 console.log(err);
                 res.send(err);
             } else {
                 res.render('posts/show.ejs', {
                     user: foundUser,
-                    post: foundUser.posts[0] // 1st post it finds
+                    post: foundUser.posts[0],  // 1st post it finds
+                    ourPost: ourPost
                 });
             }
 

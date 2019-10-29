@@ -5,7 +5,10 @@
         </header>
         <main>
             <form action="/posts" method="post">
-                <input type="text" name="title" /><br />
+                <input type="text" name="title"/><br/>
+                <input type="text" name="photo" placeholder="img src"> <br>
+                <input type="text" name="link" placeholder="https://example.com">
+                <br>
                 <textarea name="body"></textarea><br />
                 <input type="submit" value="Publish Post" />
             </form>
