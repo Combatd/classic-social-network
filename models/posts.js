@@ -6,10 +6,9 @@ const postSchema = new mongoose.Schema(
         body: { type: String },
         photo: { type: String },
         link: { type: String },
-        comments: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment' // reference comment
-        }]
+        comments: [
+            // comments will go here
+        ]
     }
 )
 
