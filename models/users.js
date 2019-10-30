@@ -11,9 +11,9 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Post' // references post
         }],
-        favorites: [{ 
+        favorites: [ 
                 // favorite posts unshift here
-        }]
+        ]
     }
 );
 

@@ -26,10 +26,9 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Post' // references post
         }],
-        favorites: [{ 
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Post' // reference post 
-            }]
+        favorites: [ 
+                // favorite posts unshift here
+        ]
     }
 );
 ```
