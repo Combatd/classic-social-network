@@ -4,6 +4,23 @@ const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
 
+// User - Show page
+router.get('/:username',  (req, res) => {
+    User.find({ 'username' : req.params.username }, (err, foundUser) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            console.log(foundUser);
+            res.render('users/show.ejs', {
+                user: foundUser
+            })
+        }
+    });
+
+
+});
+
 
 router.post('/registration', async (req, res) => {
 
