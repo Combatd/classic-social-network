@@ -68,7 +68,6 @@ router.get('/:id', (req, res) => {
                 res.render('posts/show.ejs', {
                     user: foundUser,
                     post: foundUser.posts[0],  // 1st post it finds
-                    ourPost: ourPost
                 });
             }
 
