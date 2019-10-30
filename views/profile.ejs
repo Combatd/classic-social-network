@@ -1,0 +1,20 @@
+<%- include partials/header %>
+    <%- include partials/navbar %>
+    <header>
+        <h1><%=user.username%></h1>
+        <img src="<%=user.photo%>" alt="">
+    </header>
+    
+    <main>
+        <ul>
+            <% for (let i = 0; i < user.favorites.length; i++) { %>
+                <li>
+                    <a href="/posts/<%=user.favorites[i]._id%>"><%=user.favorites[i].title%></a>
+                </li>
+                <br>
+            <% } %>    
+        </ul>
+    </main>
+
+    </body>
+</html>

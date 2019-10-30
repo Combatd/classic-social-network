@@ -4,7 +4,7 @@ const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 
 
-// User - Show page
+// User - Profile (SHOW) page
 router.get('/:username',  (req, res) => {
     User.find({ 'username' : req.params.username }, (err, foundUser) => {
         if (err) {
@@ -12,7 +12,7 @@ router.get('/:username',  (req, res) => {
             res.send(err);
         } else {
             console.log(foundUser);
-            res.render('users/show.ejs', {
+            res.render('profile.ejs', {
                 user: foundUser
             })
         }
@@ -26,9 +26,10 @@ router.post('/registration', async (req, res) => {
 
     const existingUser = User.find({username: req.body.username})
 
-    if (existingUser) {
-        res.send('That user name is already taken!')
-    } else {
+    // if (existingUser) {
+    //     res.send('That user name is already taken!')
+    // } 
+    
         const password = req.body.password;
         // hash a password in a generated salt
         const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -49,7 +50,7 @@ router.post('/registration', async (req, res) => {
         req.session.logged = true;
         console.log(req.body);
         res.redirect('/posts');
-    }
+    
 
     
 });
