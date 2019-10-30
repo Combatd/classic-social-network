@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 
 
 // User - Profile (SHOW) page
-router.get('/:id',  (req, res) => {
-    
+router.get('/:id', (req, res) => {
+
     // Authors.findById(req.params.id)
     //     .populate({ path: 'articles' })
     //     .exec((err, foundAuthor) => {
@@ -17,21 +17,33 @@ router.get('/:id',  (req, res) => {
     //             author: foundAuthor
     //         });
     //     })
-    
-    User.findById(req.params.id)
-        .populate( { path : 'posts' })
+
+    User.findOne( { _id: req.params.id })
+        .populate({ path: 'posts' })
         .exec((err, foundUser) => {
             if (err) {
                 console.log(err)
                 res.send(err);
             } else {
                 res.render('profile.ejs', {
-                    user: foundUser
+                    user: foundUser,
                 });
             }
         });
 
+    // User.findById(req.params.id, (err, foundUser) => {
+    //     if(err) {
+    //         console.log(err)
+    //         res.send(err);
+    //     } else {
+    //         console.log(foundUser);
+    //         res.render('profile.ejs', {
+    //             user: foundUser
+    //         });
+    //     }
+    // });
 
+   
 });
 
 
@@ -53,7 +65,7 @@ router.post('/registration', async (req, res) => {
         userDbEntry.username = req.body.username;
         userDbEntry.password = passwordHash;
         userDbEntry.email = req.body.email;
-
+        userDbEntry.photo = req.body.photo;
         // we can actually add the user to the db here
         // set the username taken from the session to the new user's
         // username and then log the session as online

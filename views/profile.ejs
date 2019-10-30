@@ -1,11 +1,14 @@
 <%- include partials/header %>
     <%- include partials/navbar %>
     <header>
-        <h1><%=user.username%></h1>
-        <img src="<%=user.photo%>" alt="">
+        <h1><%=user.username%> Profile</h1>
+        <h3>Registration Date: <%=user.date%></h3>
+        
     </header>
     
     <main>
+        <img src="<%=user.photo%>" alt="">
+        <h2><%=user.username%> Posts</h2>
         <ul>
             <% for (let i = 0; i < user.posts.length; i++) { %>
                 <li>

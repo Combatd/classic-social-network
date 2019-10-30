@@ -4,11 +4,15 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
+
+
 // process.env.port might be here later
 const PORT = 3000;
 
 // require our database
 require('./db/db.js');
+
+
 
 // session control
 app.use(session({
