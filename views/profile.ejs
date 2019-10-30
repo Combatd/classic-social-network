@@ -7,9 +7,9 @@
     
     <main>
         <ul>
-            <% for (let i = 0; i < user.favorites.length; i++) { %>
+            <% for (let i = 0; i < user.posts.length; i++) { %>
                 <li>
-                    <a href="/posts/<%=user.favorites[i]._id%>"><%=user.favorites[i].title%></a>
+                    <a href="/posts/<%=user.posts[i]._id%>"><%=user.posts[i].title%></a>
                 </li>
                 <br>
             <% } %>    

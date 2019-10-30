@@ -5,18 +5,31 @@ const bcrypt = require('bcryptjs');
 
 
 // User - Profile (SHOW) page
-router.get('/:username',  (req, res) => {
-    User.find({ 'username' : req.params.username }, (err, foundUser) => {
-        if (err) {
-            console.log(err);
-            res.send(err);
-        } else {
-            console.log(foundUser);
-            res.render('profile.ejs', {
-                user: foundUser
-            })
-        }
-    });
+router.get('/:id',  (req, res) => {
+    
+    // Authors.findById(req.params.id)
+    //     .populate({ path: 'articles' })
+    //     .exec((err, foundAuthor) => {
+    //         if (err) console.log(err);
+    //         console.log(foundAuthor)
+
+    //         res.render('authors/show.ejs', {
+    //             author: foundAuthor
+    //         });
+    //     })
+    
+    User.findById(req.params.id)
+        .populate( { path : 'posts' })
+        .exec((err, foundUser) => {
+            if (err) {
+                console.log(err)
+                res.send(err);
+            } else {
+                res.render('profile.ejs', {
+                    user: foundUser
+                });
+            }
+        });
 
 
 });
@@ -29,7 +42,7 @@ router.post('/registration', async (req, res) => {
     // if (existingUser) {
     //     res.send('That user name is already taken!')
     // } 
-    
+
         const password = req.body.password;
         // hash a password in a generated salt
         const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
