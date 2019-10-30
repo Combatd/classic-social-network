@@ -15,7 +15,7 @@ router.post('/registration', async (req, res) => {
     // information will come from the form that follows the 
     // userSchema from models/users.js
     userDbEntry.username = req.body.username;
-    userDbEntry.password = req.body.password;
+    userDbEntry.password = passwordHash;
     userDbEntry.email = req.body.email;
 
     // we can actually add the user to the db here
@@ -39,7 +39,9 @@ router.post('/login', async (req, res) => {
     // find if the user exits
     try {
         const foundUser = await User.findOne({ username: req.body.username });
+        console.log(req.body);
         // if User.findOne returns null/ or undefined it won't throw an error
+        console.log(foundUser);
         if (foundUser) {
 
             if (bcrypt.compareSync(req.body.password, foundUser.password)) {

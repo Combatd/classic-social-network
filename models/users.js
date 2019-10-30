@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema(
             ref: 'Post' // references post
         }],
         favorites: [{ 
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Post' // reference post 
+                // favorite posts unshift here
         }]
     }
 );
