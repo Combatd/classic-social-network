@@ -1,34 +1,49 @@
-<%- include ../partials/header %>
-    <%- include ../partials/navbar %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>README Social Network</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Source+Code+Pro:400,700'
+        rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/post.css">
+    
+</head>    
+   
+
     <header>
+        
         <h1>Posts</h1>
         
             <a href="/posts/new">Create a new Post</a>
     </header>
-    <main>
-        <h1><%=post.title%></h1>
-        <h2><%=post.date%></h2>
+    <main class="post">
+        <h2><%=post.title%></h2>
+        <div class="date"><%=post.date%></div>
         <a href="/auth/<%=user._id%>""><%=user.username%>%> profile</a>
-        <img src="<%=user.photo%>" alt="">
+        <img class="user-img" src="<%=user.photo%>" alt="">
         <section>
-            <%=post.body%>
+            <p class="post-body">
+                <%=post.body%>
+            </p>        
         </section>
         <section>
-            <img src="<%=post.photo%>" alt="">
+            <img class="post-img" src="<%=post.photo%>" alt="">
             <br>
             <a href="<%=post.link%>">Link</a>
             <br>
             <a href="/posts/<%=post._id%>/edit">Edit</a>
         </section>
         <section>
-            <h3>Comments</h3>
+            <h2>Comments</h2>
             <%- include ../comments/new %>
             <ul>
                 <% for(let i = 0; i < post.comments.length; i++)  { %>
                     <li>
+                        <p class="post-body">
                         <strong><%=`${post.comments[i].title}`%></strong>
                         <br>
                         <%=`${post.comments[i].body}`%>
+                        </p>
                     </li>
                 <% } %>    
             </ul>
@@ -37,7 +52,7 @@
 
         <section>
             <form action="/posts/<%=post._id%>?_method=DELETE" method="post">
-                <button value='DELETE'>DELETE</button>
+                <button value='DELETE'>DELETE POST</button>
             </form>
         </section>
     </main>
