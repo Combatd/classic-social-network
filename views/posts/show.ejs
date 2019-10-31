@@ -6,12 +6,41 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Source+Code+Pro:400,700'
         rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/post.css">
-    
-</head>    
-   
 
+</head>    
+    
     <header>
+        <nav class="nav">
+            <div class="nav-header">
+                <div class="nav-left">
+                    <a href="/" class="nav-link">READ-ME</a>
+                </div>
+                <div class="nav-center">
         
+                </div>
+                <div class="nav-right">
+                    <a href="/users" class="nav-link">Users</a>
+                    <a href="/posts" class="nav-link">Posts</a>
+                    <a href="/login" class="nav-link">Login</a>
+                    <a href="/auth/logout" class="nav-link">Logout</a>
+                    <div class="hamburger-menu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="overlay-content">
+                    <a href="/" class="overlay-link">Home</a>
+                    <a href="/posts" class="overlay-link">Posts</a>
+                    <a href="/login" class="overlay-link">Login</a>
+                    <a href="/auth/logout" class="overlay-link">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+
         <h1>Posts</h1>
         
             <a href="/posts/new">Create a new Post</a>
@@ -56,6 +85,17 @@
             </form>
         </section>
     </main>
+
+    <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const overlay = document.querySelector('.overlay');
+
+        hamburgerMenu.addEventListener('click', function () {
+            this.classList.toggle('open');
+            overlay.classList.toggle('show');
+        });
+
+    </script>
 
     </body>    
 </html>
