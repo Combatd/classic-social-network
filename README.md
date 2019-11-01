@@ -15,6 +15,13 @@ Technologies: HTML5, CSS3, JavaScript, MongoDB, Mongoose, Express.js, Node.js, b
 ## MVC Data
 * EJS templates will hold and display properties of a post, and all of the comments.
 
+## Possible Future Features
+* Customizable User Profiles
+* User Profile Comments
+* Users saving posts as favorites
+* Better User Authentication (Passport.js)
+* Improve Responsiveness on CSS
+
 ```
 const userSchema = new mongoose.Schema(
     {
