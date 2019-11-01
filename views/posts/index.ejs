@@ -1,6 +1,6 @@
 <%- include ../partials/header %>
     <%- include ../partials/navbar %>
-
+    <link rel="stylesheet" href="/css/posts.css">
     <header>
         <h1>Posts</h1>
         <section>
@@ -11,10 +11,13 @@
         <h2>List of Posts</h2>
         <ul>
             <% for(let i = 0; i < posts.length; i++){ %>
-            <li>
+            <li class="post">
                 <a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a>
                 <br>
-                <%=posts[i].body%>
+                <p class="post-body">
+                    <%=posts[i].body%>
+                </p>   
+
             </li>
             <% } %>
             </ul>
