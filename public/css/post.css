@@ -69,8 +69,9 @@ hr{
 .nav {
   position: fixed;
   border-bottom: 1px solid black;
-  width: 80%;
+  width: 100%;
   top: 0;
+  left: 10px;
   background-color: white;
 }
 .nav-header {
