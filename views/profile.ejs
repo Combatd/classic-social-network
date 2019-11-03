@@ -16,6 +16,7 @@
             <% for (let i = 0; i < user.posts.length; i++) { %>
                 <li>
                     <a href="/posts/<%=user.posts[i]._id%>"><%=user.posts[i].title%></a>
+                    <%=user.posts[i].date%>
                 </li>
                 <br>
             <% } %>    
