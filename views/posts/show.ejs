@@ -63,7 +63,7 @@
             <a href="/posts/<%=post._id%>/edit">Edit</a>
         </section>
         <section>
-            <h2>Comments</h2>
+            <h2>Comments: <%=post.comments.length%></h2>
             <%- include ../comments/new %>
             <ul>
                 <% for(let i = 0; i < post.comments.length; i++)  { %>
