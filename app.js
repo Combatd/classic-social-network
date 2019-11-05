@@ -4,13 +4,16 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
-
-
-// process.env.port might be here later
-const PORT = 3000;
+// REQUIRE .env
+require('dotenv').config();
 
 // require our database
 require('./db/db.js');
+
+// process.env.port might be here later
+const PORT = process.env.PORT;
+
+
 
 
 
@@ -87,5 +90,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log('Server listening on port ' + PORT); 
+    console.log(`Server listening on port ${PORT}`); 
 });
