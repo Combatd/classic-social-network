@@ -5,6 +5,9 @@ This is a clone of a social network found pre-2010 era. The user will be able to
 
 Technologies: HTML5, CSS3, JavaScript, MongoDB, Mongoose, Express.js, Node.js, bcrypt, EJS.
 
+Open READ-ME! **[https://readme-messageboard.herokuapp.com/](https://readme-messageboard.herokuapp.com/)**.
+
+
 ## User Stories
 * Users will be able to register or login to their account on the homepage (index route on app.js)
 * On login (/posts), the user will be able to click on the navigation bar to access all posts made by all users on the site, as well as their own posts. They can add posts to their favorites list, and also see who has added a post to their favorites. They will be able to click to view their own profile. 
